@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz - PsiQuiz</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="imagens/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="imagens/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="imagens/favicon-16x16.png">
+  <link rel="manifest" href="imagens/site.webmanifest">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagens/borboleta.png" alt="Logo Borboleta">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="mbti.html">MBTIs</a></li>
+          <li><a href="tipos.html">Tipos de MBTI</a></li>
+          <li><a href="quiz.html" class="active">Quiz</a></li>
+          <li><a href="profissoes.html">Profissões</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+  <h2>Teste de Personalidade MBTI</h2>
+  <p>Responda às perguntas abaixo usando a escala de 0 a 5, onde:</p>
+  <div class="escala-info">
+    <span><strong>0</strong> = Discordo totalmente</span>
+    <span><strong>5</strong> = Concordo totalmente</span>
+  </div>
+
+  <form id="mbti-quiz">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+    <div class="progress-text">Pergunta <span id="current-question">1</span> de 48</div>
+
+    <!-- Perguntas Extroversão vs Introversão -->
+    <div class="question-group">
+      <h3>🗣️ Como você interage com o mundo</h3>
+      
+      <div class="question">
+        <p>1. Eu me sinto energizado(a) quando estou com outras pessoas.</p>
+        <div class="scale">
+          <input type="radio" name="q1" value="0" id="q1-0"><label for="q1-0">0</label>
+          <input type="radio" name="q1" value="1" id="q1-1"><label for="q1-1">1</label>
+          <input type="radio" name="q1" value="2" id="q1-2"><label for="q1-2">2</label>
+          <input type="radio" name="q1" value="3" id="q1-3"><label for="q1-3">3</label>
+          <input type="radio" name="q1" value="4" id="q1-4"><label for="q1-4">4</label>
+          <input type="radio" name="q1" value="5" id="q1-5"><label for="q1-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. Prefiro passar tempo sozinho(a) para recarregar minhas energias.</p>
+        <div class="scale">
+          <input type="radio" name="q2" value="0" id="q2-0"><label for="q2-0">0</label>
+          <input type="radio" name="q2" value="1" id="q2-1"><label for="q2-1">1</label>
+          <input type="radio" name="q2" value="2" id="q2-2"><label for="q2-2">2</label>
+          <input type="radio" name="q2" value="3" id="q2-3"><label for="q2-3">3</label>
+          <input type="radio" name="q2" value="4" id="q2-4"><label for="q2-4">4</label>
+          <input type="radio" name="q2" value="5" id="q2-5"><label for="q2-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. Gosto de conhecer pessoas novas em festas e eventos sociais.</p>
+        <div class="scale">
+          <input type="radio" name="q3" value="0" id="q3-0"><label for="q3-0">0</label>
+          <input type="radio" name="q3" value="1" id="q3-1"><label for="q3-1">1</label>
+          <input type="radio" name="q3" value="2" id="q3-2"><label for="q3-2">2</label>
+          <input type="radio" name="q3" value="3" id="q3-3"><label for="q3-3">3</label>
+          <input type="radio" name="q3" value="4" id="q3-4"><label for="q3-4">4</label>
+          <input type="radio" name="q3" value="5" id="q3-5"><label for="q3-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. Preciso de tempo para processar informações antes de compartilhar minhas ideias.</p>
+        <div class="scale">
+          <input type="radio" name="q4" value="0" id="q4-0"><label for="q4-0">0</label>
+          <input type="radio" name="q4" value="1" id="q4-1"><label for="q4-1">1</label>
+          <input type="radio" name="q4" value="2" id="q4-2"><label for="q4-2">2</label>
+          <input type="radio" name="q4" value="3" id="q4-3"><label for="q4-3">3</label>
+          <input type="radio" name="q4" value="4" id="q4-4"><label for="q4-4">4</label>
+          <input type="radio" name="q4" value="5" id="q4-5"><label for="q4-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. Penso melhor quando falo em voz alta com outras pessoas.</p>
+        <div class="scale">
+          <input type="radio" name="q5" value="0" id="q5-0"><label for="q5-0">0</label>
+          <input type="radio" name="q5" value="1" id="q5-1"><label for="q5-1">1</label>
+          <input type="radio" name="q5" value="2" id="q5-2"><label for="q5-2">2</label>
+          <input type="radio" name="q5" value="3" id="q5-3"><label for="q5-3">3</label>
+          <input type="radio" name="q5" value="4" id="q5-4"><label for="q5-4">4</label>
+          <input type="radio" name="q5" value="5" id="q5-5"><label for="q5-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. Prefiro ter poucos amigos próximos do que muitos conhecidos.</p>
+        <div class="scale">
+          <input type="radio" name="q6" value="0" id="q6-0"><label for="q6-0">0</label>
+          <input type="radio" name="q6" value="1" id="q6-1"><label for="q6-1">1</label>
+          <input type="radio" name="q6" value="2" id="q6-2"><label for="q6-2">2</label>
+          <input type="radio" name="q6" value="3" id="q6-3"><label for="q6-3">3</label>
+          <input type="radio" name="q6" value="4" id="q6-4"><label for="q6-4">4</label>
+          <input type="radio" name="q6" value="5" id="q6-5"><label for="q6-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. Sou geralmente o primeiro a iniciar conversas em grupos.</p>
+        <div class="scale">
+          <input type="radio" name="q7" value="0" id="q7-0"><label for="q7-0">0</label>
+          <input type="radio" name="q7" value="1" id="q7-1"><label for="q7-1">1</label>
+          <input type="radio" name="q7" value="2" id="q7-2"><label for="q7-2">2</label>
+          <input type="radio" name="q7" value="3" id="q7-3"><label for="q7-3">3</label>
+          <input type="radio" name="q7" value="4" id="q7-4"><label for="q7-4">4</label>
+          <input type="radio" name="q7" value="5" id="q7-5"><label for="q7-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. Grandes grupos sociais me deixam cansado(a) rapidamente.</p>
+        <div class="scale">
+          <input type="radio" name="q8" value="0" id="q8-0"><label for="q8-0">0</label>
+          <input type="radio" name="q8" value="1" id="q8-1"><label for="q8-1">1</label>
+          <input type="radio" name="q8" value="2" id="q8-2"><label for="q8-2">2</label>
+          <input type="radio" name="q8" value="3" id="q8-3"><label for="q8-3">3</label>
+          <input type="radio" name="q8" value="4" id="q8-4"><label for="q8-4">4</label>
+          <input type="radio" name="q8" value="5" id="q8-5"><label for="q8-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>9. Gosto de ser o centro das atenções em situações sociais.</p>
+        <div class="scale">
+          <input type="radio" name="q9" value="0" id="q9-0"><label for="q9-0">0</label>
+          <input type="radio" name="q9" value="1" id="q9-1"><label for="q9-1">1</label>
+          <input type="radio" name="q9" value="2" id="q9-2"><label for="q9-2">2</label>
+          <input type="radio" name="q9" value="3" id="q9-3"><label for="q9-3">3</label>
+          <input type="radio" name="q9" value="4" id="q9-4"><label for="q9-4">4</label>
+          <input type="radio" name="q9" value="5" id="q9-5"><label for="q9-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>10. Prefiro observar antes de participar de atividades em grupo.</p>
+        <div class="scale">
+          <input type="radio" name="q10" value="0" id="q10-0"><label for="q10-0">0</label>
+          <input type="radio" name="q10" value="1" id="q10-1"><label for="q10-1">1</label>
+          <input type="radio" name="q10" value="2" id="q10-2"><label for="q10-2">2</label>
+          <input type="radio" name="q10" value="3" id="q10-3"><label for="q10-3">3</label>
+          <input type="radio" name="q10" value="4" id="q10-4"><label for="q10-4">4</label>
+          <input type="radio" name="q10" value="5" id="q10-5"><label for="q10-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>11. Trabalho melhor em ambientes com muita interação social.</p>
+        <div class="scale">
+          <input type="radio" name="q11" value="0" id="q11-0"><label for="q11-0">0</label>
+          <input type="radio" name="q11" value="1" id="q11-1"><label for="q11-1">1</label>
+          <input type="radio" name="q11" value="2" id="q11-2"><label for="q11-2">2</label>
+          <input type="radio" name="q11" value="3" id="q11-3"><label for="q11-3">3</label>
+          <input type="radio" name="q11" value="4" id="q11-4"><label for="q11-4">4</label>
+          <input type="radio" name="q11" value="5" id="q11-5"><label for="q11-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>12. Preciso de silêncio e privacidade para me concentrar melhor.</p>
+        <div class="scale">
+          <input type="radio" name="q12" value="0" id="q12-0"><label for="q12-0">0</label>
+          <input type="radio" name="q12" value="1" id="q12-1"><label for="q12-1">1</label>
+          <input type="radio" name="q12" value="2" id="q12-2"><label for="q12-2">2</label>
+          <input type="radio" name="q12" value="3" id="q12-3"><label for="q12-3">3</label>
+          <input type="radio" name="q12" value="4" id="q12-4"><label for="q12-4">4</label>
+          <input type="radio" name="q12" value="5" id="q12-5"><label for="q12-5">5</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perguntas Sensorial vs Intuição -->
+    <div class="question-group">
+      <h3>🔍 Como você processa informações</h3>
+      
+      <div class="question">
+        <p>13. Prefiro focar nos detalhes e fatos concretos.</p>
+        <div class="scale">
+          <input type="radio" name="q13" value="0" id="q13-0"><label for="q13-0">0</label>
+          <input type="radio" name="q13" value="1" id="q13-1"><label for="q13-1">1</label>
+          <input type="radio" name="q13" value="2" id="q13-2"><label for="q13-2">2</label>
+          <input type="radio" name="q13" value="3" id="q13-3"><label for="q13-3">3</label>
+          <input type="radio" name="q13" value="4" id="q13-4"><label for="q13-4">4</label>
+          <input type="radio" name="q13" value="5" id="q13-5"><label for="q13-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>14. Gosto de explorar possibilidades e significados ocultos.</p>
+        <div class="scale">
+          <input type="radio" name="q14" value="0" id="q14-0"><label for="q14-0">0</label>
+          <input type="radio" name="q14" value="1" id="q14-1"><label for="q14-1">1</label>
+          <input type="radio" name="q14" value="2" id="q14-2"><label for="q14-2">2</label>
+          <input type="radio" name="q14" value="3" id="q14-3"><label for="q14-3">3</label>
+          <input type="radio" name="q14" value="4" id="q14-4"><label for="q14-4">4</label>
+          <input type="radio" name="q14" value="5" id="q14-5"><label for="q14-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>15. Sou uma pessoa prática que gosta de soluções testadas.</p>
+        <div class="scale">
+          <input type="radio" name="q15" value="0" id="q15-0"><label for="q15-0">0</label>
+          <input type="radio" name="q15" value="1" id="q15-1"><label for="q15-1">1</label>
+          <input type="radio" name="q15" value="2" id="q15-2"><label for="q15-2">2</label>
+          <input type="radio" name="q15" value="3" id="q15-3"><label for="q15-3">3</label>
+          <input type="radio" name="q15" value="4" id="q15-4"><label for="q15-4">4</label>
+          <input type="radio" name="q15" value="5" id="q15-5"><label for="q15-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>16. Prefiro inovar e criar novas maneiras de fazer as coisas.</p>
+        <div class="scale">
+          <input type="radio" name="q16" value="0" id="q16-0"><label for="q16-0">0</label>
+          <input type="radio" name="q16" value="1" id="q16-1"><label for="q16-1">1</label>
+          <input type="radio" name="q16" value="2" id="q16-2"><label for="q16-2">2</label>
+          <input type="radio" name="q16" value="3" id="q16-3"><label for="q16-3">3</label>
+          <input type="radio" name="q16" value="4" id="q16-4"><label for="q16-4">4</label>
+          <input type="radio" name="q16" value="5" id="q16-5"><label for="q16-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>17. Confio mais na experiência do que na intuição.</p>
+        <div class="scale">
+          <input type="radio" name="q17" value="0" id="q17-0"><label for="q17-0">0</label>
+          <input type="radio" name="q17" value="1" id="q17-1"><label for="q17-1">1</label>
+          <input type="radio" name="q17" value="2" id="q17-2"><label for="q17-2">2</label>
+          <input type="radio" name="q17" value="3" id="q17-3"><label for="q17-3">3</label>
+          <input type="radio" name="q17" value="4" id="q17-4"><label for="q17-4">4</label>
+          <input type="radio" name="q17" value="5" id="q17-5"><label for="q17-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>18. Tenho facilidade para ver padrões e conexões entre ideias.</p>
+        <div class="scale">
+          <input type="radio" name="q18" value="0" id="q18-0"><label for="q18-0">0</label>
+          <input type="radio" name="q18" value="1" id="q18-1"><label for="q18-1">1</label>
+          <input type="radio" name="q18" value="2" id="q18-2"><label for="q18-2">2</label>
+          <input type="radio" name="q18" value="3" id="q18-3"><label for="q18-3">3</label>
+          <input type="radio" name="q18" value="4" id="q18-4"><label for="q18-4">4</label>
+          <input type="radio" name="q18" value="5" id="q18-5"><label for="q18-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>19. Prefiro instruções claras e específicas.</p>
+        <div class="scale">
+          <input type="radio" name="q19" value="0" id="q19-0"><label for="q19-0">0</label>
+          <input type="radio" name="q19" value="1" id="q19-1"><label for="q19-1">1</label>
+          <input type="radio" name="q19" value="2" id="q19-2"><label for="q19-2">2</label>
+          <input type="radio" name="q19" value="3" id="q19-3"><label for="q19-3">3</label>
+          <input type="radio" name="q19" value="4" id="q19-4"><label for="q19-4">4</label>
+          <input type="radio" name="q19" value="5" id="q19-5"><label for="q19-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>20. Gosto de teorizar sobre o futuro e possibilidades.</p>
+        <div class="scale">
+          <input type="radio" name="q20" value="0" id="q20-0"><label for="q20-0">0</label>
+          <input type="radio" name="q20" value="1" id="q20-1"><label for="q20-1">1</label>
+          <input type="radio" name="q20" value="2" id="q20-2"><label for="q20-2">2</label>
+          <input type="radio" name="q20" value="3" id="q20-3"><label for="q20-3">3</label>
+          <input type="radio" name="q20" value="4" id="q20-4"><label for="q20-4">4</label>
+          <input type="radio" name="q20" value="5" id="q20-5"><label for="q20-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>21. Sou bom(boa) em notar detalhes que outros perdem.</p>
+        <div class="scale">
+          <input type="radio" name="q21" value="0" id="q21-0"><label for="q21-0">0</label>
+          <input type="radio" name="q21" value="1" id="q21-1"><label for="q21-1">1</label>
+          <input type="radio" name="q21" value="2" id="q21-2"><label for="q21-2">2</label>
+          <input type="radio" name="q21" value="3" id="q21-3"><label for="q21-3">3</label>
+          <input type="radio" name="q21" value="4" id="q21-4"><label for="q21-4">4</label>
+          <input type="radio" name="q21" value="5" id="q21-5"><label for="q21-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>22. Prefiro pensar no quadro geral do que nos detalhes.</p>
+        <div class="scale">
+          <input type="radio" name="q22" value="0" id="q22-0"><label for="q22-0">0</label>
+          <input type="radio" name="q22" value="1" id="q22-1"><label for="q22-1">1</label>
+          <input type="radio" name="q22" value="2" id="q22-2"><label for="q22-2">2</label>
+          <input type="radio" name="q22" value="3" id="q22-3"><label for="q22-3">3</label>
+          <input type="radio" name="q22" value="4" id="q22-4"><label for="q22-4">4</label>
+          <input type="radio" name="q22" value="5" id="q22-5"><label for="q22-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>23. Gosto de trabalhar com dados e informações concretas.</p>
+        <div class="scale">
+          <input type="radio" name="q23" value="0" id="q23-0"><label for="q23-0">0</label>
+          <input type="radio" name="q23" value="1" id="q23-1"><label for="q23-1">1</label>
+          <input type="radio" name="q23" value="2" id="q23-2"><label for="q23-2">2</label>
+          <input type="radio" name="q23" value="3" id="q23-3"><label for="q23-3">3</label>
+          <input type="radio" name="q23" value="4" id="q23-4"><label for="q23-4">4</label>
+          <input type="radio" name="q23" value="5" id="q23-5"><label for="q23-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>24. Sou inspirado(a) por conceitos abstratos e metáforas.</p>
+        <div class="scale">
+          <input type="radio" name="q24" value="0" id="q24-0"><label for="q24-0">0</label>
+          <input type="radio" name="q24" value="1" id="q24-1"><label for="q24-1">1</label>
+          <input type="radio" name="q24" value="2" id="q24-2"><label for="q24-2">2</label>
+          <input type="radio" name="q24" value="3" id="q24-3"><label for="q24-3">3</label>
+          <input type="radio" name="q24" value="4" id="q24-4"><label for="q24-4">4</label>
+          <input type="radio" name="q24" value="5" id="q24-5"><label for="q24-5">5</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perguntas Pensamento vs Sentimento -->
+    <div class="question-group">
+      <h3>⚖️ Como você toma decisões</h3>
+      
+      <div class="question">
+        <p>25. Tomo decisões baseadas principalmente na lógica e análise.</p>
+        <div class="scale">
+          <input type="radio" name="q25" value="0" id="q25-0"><label for="q25-0">0</label>
+          <input type="radio" name="q25" value="1" id="q25-1"><label for="q25-1">1</label>
+          <input type="radio" name="q25" value="2" id="q25-2"><label for="q25-2">2</label>
+          <input type="radio" name="q25" value="3" id="q25-3"><label for="q25-3">3</label>
+          <input type="radio" name="q25" value="4" id="q25-4"><label for="q25-4">4</label>
+          <input type="radio" name="q25" value="5" id="q25-5"><label for="q25-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>26. Considero os sentimentos das pessoas ao tomar decisões.</p>
+        <div class="scale">
+          <input type="radio" name="q26" value="0" id="q26-0"><label for="q26-0">0</label>
+          <input type="radio" name="q26" value="1" id="q26-1"><label for="q26-1">1</label>
+          <input type="radio" name="q26" value="2" id="q26-2"><label for="q26-2">2</label>
+          <input type="radio" name="q26" value="3" id="q26-3"><label for="q26-3">3</label>
+          <input type="radio" name="q26" value="4" id="q26-4"><label for="q26-4">4</label>
+          <input type="radio" name="q26" value="5" id="q26-5"><label for="q26-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>27. Valorizo a objetividade e imparcialidade.</p>
+        <div class="scale">
+          <input type="radio" name="q27" value="0" id="q27-0"><label for="q27-0">0</label>
+          <input type="radio" name="q27" value="1" id="q27-1"><label for="q27-1">1</label>
+          <input type="radio" name="q27" value="2" id="q27-2"><label for="q27-2">2</label>
+          <input type="radio" name="q27" value="3" id="q27-3"><label for="q27-3">3</label>
+          <input type="radio" name="q27" value="4" id="q27-4"><label for="q27-4">4</label>
+          <input type="radio" name="q27" value="5" id="q27-5"><label for="q27-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>28. Prefiro harmonia e cooperação em grupos.</p>
+        <div class="scale">
+          <input type="radio" name="q28" value="0" id="q28-0"><label for="q28-0">0</label>
+          <input type="radio" name="q28" value="1" id="q28-1"><label for="q28-1">1</label>
+          <input type="radio" name="q28" value="2" id="q28-2"><label for="q28-2">2</label>
+          <input type="radio" name="q28" value="3" id="q28-3"><label for="q28-3">3</label>
+          <input type="radio" name="q28" value="4" id="q28-4"><label for="q28-4">4</label>
+          <input type="radio" name="q28" value="5" id="q28-5"><label for="q28-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>29. Sou direto(a) ao dar feedback, mesmo que seja crítico.</p>
+        <div class="scale">
+          <input type="radio" name="q29" value="0" id="q29-0"><label for="q29-0">0</label>
+          <input type="radio" name="q29" value="1" id="q29-1"><label for="q29-1">1</label>
+          <input type="radio" name="q29" value="2" id="q29-2"><label for="q29-2">2</label>
+          <input type="radio" name="q29" value="3" id="q29-3"><label for="q29-3">3</label>
+          <input type="radio" name="q29" value="4" id="q29-4"><label for="q29-4">4</label>
+          <input type="radio" name="q29" value="5" id="q29-5"><label for="q29-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>30. Me preocupo em como minhas ações afetam os outros emocionalmente.</p>
+        <div class="scale">
+          <input type="radio" name="q30" value="0" id="q30-0"><label for="q30-0">0</label>
+          <input type="radio" name="q30" value="1" id="q30-1"><label for="q30-1">1</label>
+          <input type="radio" name="q30" value="2" id="q30-2"><label for="q30-2">2</label>
+          <input type="radio" name="q30" value="3" id="q30-3"><label for="q30-3">3</label>
+          <input type="radio" name="q30" value="4" id="q30-4"><label for="q30-4">4</label>
+          <input type="radio" name="q30" value="5" id="q30-5"><label for="q30-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>31. Acredito que a verdade é mais importante que a diplomacia.</p>
+        <div class="scale">
+          <input type="radio" name="q31" value="0" id="q31-0"><label for="q31-0">0</label>
+          <input type="radio" name="q31" value="1" id="q31-1"><label for="q31-1">1</label>
+          <input type="radio" name="q31" value="2" id="q31-2"><label for="q31-2">2</label>
+          <input type="radio" name="q31" value="3" id="q31-3"><label for="q31-3">3</label>
+          <input type="radio" name="q31" value="4" id="q31-4"><label for="q31-4">4</label>
+          <input type="radio" name="q31" value="5" id="q31-5"><label for="q31-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>32. Sou motivado(a) por valores pessoais e o bem-estar dos outros.</p>
+        <div class="scale">
+          <input type="radio" name="q32" value="0" id="q32-0"><label for="q32-0">0</label>
+          <input type="radio" name="q32" value="1" id="q32-1"><label for="q32-1">1</label>
+          <input type="radio" name="q32" value="2" id="q32-2"><label for="q32-2">2</label>
+          <input type="radio" name="q32" value="3" id="q32-3"><label for="q32-3">3</label>
+          <input type="radio" name="q32" value="4" id="q32-4"><label for="q32-4">4</label>
+          <input type="radio" name="q32" value="5" id="q32-5"><label for="q32-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>33. Prefiro resolver conflitos através da análise racional.</p>
+        <div class="scale">
+          <input type="radio" name="q33" value="0" id="q33-0"><label for="q33-0">0</label>
+          <input type="radio" name="q33" value="1" id="q33-1"><label for="q33-1">1</label>
+          <input type="radio" name="q33" value="2" id="q33-2"><label for="q33-2">2</label>
+          <input type="radio" name="q33" value="3" id="q33-3"><label for="q33-3">3</label>
+          <input type="radio" name="q33" value="4" id="q33-4"><label for="q33-4">4</label>
+          <input type="radio" name="q33" value="5" id="q33-5"><label for="q33-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>34. Tenho facilidade para entender e expressar emoções.</p>
+        <div class="scale">
+          <input type="radio" name="q34" value="0" id="q34-0"><label for="q34-0">0</label>
+          <input type="radio" name="q34" value="1" id="q34-1"><label for="q34-1">1</label>
+          <input type="radio" name="q34" value="2" id="q34-2"><label for="q34-2">2</label>
+          <input type="radio" name="q34" value="3" id="q34-3"><label for="q34-3">3</label>
+          <input type="radio" name="q34" value="4" id="q34-4"><label for="q34-4">4</label>
+          <input type="radio" name="q34" value="5" id="q34-5"><label for="q34-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>35. Valorizo competência e eficiência acima de tudo.</p>
+        <div class="scale">
+          <input type="radio" name="q35" value="0" id="q35-0"><label for="q35-0">0</label>
+          <input type="radio" name="q35" value="1" id="q35-1"><label for="q35-1">1</label>
+          <input type="radio" name="q35" value="2" id="q35-2"><label for="q35-2">2</label>
+          <input type="radio" name="q35" value="3" id="q35-3"><label for="q35-3">3</label>
+          <input type="radio" name="q35" value="4" id="q35-4"><label for="q35-4">4</label>
+          <input type="radio" name="q35" value="5" id="q35-5"><label for="q35-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>36. Prefiro tomar decisões que beneficiem o maior número de pessoas.</p>
+        <div class="scale">
+          <input type="radio" name="q36" value="0" id="q36-0"><label for="q36-0">0</label>
+          <input type="radio" name="q36" value="1" id="q36-1"><label for="q36-1">1</label>
+          <input type="radio" name="q36" value="2" id="q36-2"><label for="q36-2">2</label>
+          <input type="radio" name="q36" value="3" id="q36-3"><label for="q36-3">3</label>
+          <input type="radio" name="q36" value="4" id="q36-4"><label for="q36-4">4</label>
+          <input type="radio" name="q36" value="5" id="q36-5"><label for="q36-5">5</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perguntas Julgamento vs Percepção -->
+    <div class="question-group">
+      <h3>📅 Como você organiza sua vida</h3>
+      
+      <div class="question">
+        <p>37. Prefiro ter um plano claro e seguir cronogramas.</p>
+        <div class="scale">
+          <input type="radio" name="q37" value="0" id="q37-0"><label for="q37-0">0</label>
+          <input type="radio" name="q37" value="1" id="q37-1"><label for="q37-1">1</label>
+          <input type="radio" name="q37" value="2" id="q37-2"><label for="q37-2">2</label>
+          <input type="radio" name="q37" value="3" id="q37-3"><label for="q37-3">3</label>
+          <input type="radio" name="q37" value="4" id="q37-4"><label for="q37-4">4</label>
+          <input type="radio" name="q37" value="5" id="q37-5"><label for="q37-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>38. Gosto de manter minhas opções em aberto e ser flexível.</p>
+        <div class="scale">
+          <input type="radio" name="q38" value="0" id="q38-0"><label for="q38-0">0</label>
+          <input type="radio" name="q38" value="1" id="q38-1"><label for="q38-1">1</label>
+          <input type="radio" name="q38" value="2" id="q38-2"><label for="q38-2">2</label>
+          <input type="radio" name="q38" value="3" id="q38-3"><label for="q38-3">3</label>
+          <input type="radio" name="q38" value="4" id="q38-4"><label for="q38-4">4</label>
+          <input type="radio" name="q38" value="5" id="q38-5"><label for="q38-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>39. Sinto-me confortável com rotinas e estruturas definidas.</p>
+        <div class="scale">
+          <input type="radio" name="q39" value="0" id="q39-0"><label for="q39-0">0</label>
+          <input type="radio" name="q39" value="1" id="q39-1"><label for="q39-1">1</label>
+          <input type="radio" name="q39" value="2" id="q39-2"><label for="q39-2">2</label>
+          <input type="radio" name="q39" value="3" id="q39-3"><label for="q39-3">3</label>
+          <input type="radio" name="q39" value="4" id="q39-4"><label for="q39-4">4</label>
+          <input type="radio" name="q39" value="5" id="q39-5"><label for="q39-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>40. Prefiro improvisar e me adaptar conforme as situações surgem.</p>
+        <div class="scale">
+          <input type="radio" name="q40" value="0" id="q40-0"><label for="q40-0">0</label>
+          <input type="radio" name="q40" value="1" id="q40-1"><label for="q40-1">1</label>
+          <input type="radio" name="q40" value="2" id="q40-2"><label for="q40-2">2</label>
+          <input type="radio" name="q40" value="3" id="q40-3"><label for="q40-3">3</label>
+          <input type="radio" name="q40" value="4" id="q40-4"><label for="q40-4">4</label>
+          <input type="radio" name="q40" value="5" id="q40-5"><label for="q40-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>41. Gosto de finalizar projetos e ter closure.</p>
+        <div class="scale">
+          <input type="radio" name="q41" value="0" id="q41-0"><label for="q41-0">0</label>
+          <input type="radio" name="q41" value="1" id="q41-1"><label for="q41-1">1</label>
+          <input type="radio" name="q41" value="2" id="q41-2"><label for="q41-2">2</label>
+          <input type="radio" name="q41" value="3" id="q41-3"><label for="q41-3">3</label>
+          <input type="radio" name="q41" value="4" id="q41-4"><label for="q41-4">4</label>
+          <input type="radio" name="q41" value="5" id="q41-5"><label for="q41-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>42. Trabalho melhor sob pressão e prazos apertados.</p>
+        <div class="scale">
+          <input type="radio" name="q42" value="0" id="q42-0"><label for="q42-0">0</label>
+          <input type="radio" name="q42" value="1" id="q42-1"><label for="q42-1">1</label>
+          <input type="radio" name="q42" value="2" id="q42-2"><label for="q42-2">2</label>
+          <input type="radio" name="q42" value="3" id="q42-3"><label for="q42-3">3</label>
+          <input type="radio" name="q42" value="4" id="q42-4"><label for="q42-4">4</label>
+          <input type="radio" name="q42" value="5" id="q42-5"><label for="q42-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>43. Prefiro decidir rapidamente e seguir em frente.</p>
+        <div class="scale">
+          <input type="radio" name="q43" value="0" id="q43-0"><label for="q43-0">0</label>
+          <input type="radio" name="q43" value="1" id="q43-1"><label for="q43-1">1</label>
+          <input type="radio" name="q43" value="2" id="q43-2"><label for="q43-2">2</label>
+          <input type="radio" name="q43" value="3" id="q43-3"><label for="q43-3">3</label>
+          <input type="radio" name="q43" value="4" id="q43-4"><label for="q43-4">4</label>
+          <input type="radio" name="q43" value="5" id="q43-5"><label for="q43-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>44. Gosto de explorar diferentes opções antes de decidir.</p>
+        <div class="scale">
+          <input type="radio" name="q44" value="0" id="q44-0"><label for="q44-0">0</label>
+          <input type="radio" name="q44" value="1" id="q44-1"><label for="q44-1">1</label>
+          <input type="radio" name="q44" value="2" id="q44-2"><label for="q44-2">2</label>
+          <input type="radio" name="q44" value="3" id="q44-3"><label for="q44-3">3</label>
+          <input type="radio" name="q44" value="4" id="q44-4"><label for="q44-4">4</label>
+          <input type="radio" name="q44" value="5" id="q44-5"><label for="q44-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>45. Sou pontual e organizado(a) com compromissos.</p>
+        <div class="scale">
+          <input type="radio" name="q45" value="0" id="q45-0"><label for="q45-0">0</label>
+          <input type="radio" name="q45" value="1" id="q45-1"><label for="q45-1">1</label>
+          <input type="radio" name="q45" value="2" id="q45-2"><label for="q45-2">2</label>
+          <input type="radio" name="q45" value="3" id="q45-3"><label for="q45-3">3</label>
+          <input type="radio" name="q45" value="4" id="q45-4"><label for="q45-4">4</label>
+          <input type="radio" name="q45" value="5" id="q45-5"><label for="q45-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>46. Prefiro deixar as coisas fluírem naturalmente.</p>
+        <div class="scale">
+          <input type="radio" name="q46" value="0" id="q46-0"><label for="q46-0">0</label>
+          <input type="radio" name="q46" value="1" id="q46-1"><label for="q46-1">1</label>
+          <input type="radio" name="q46" value="2" id="q46-2"><label for="q46-2">2</label>
+          <input type="radio" name="q46" value="3" id="q46-3"><label for="q46-3">3</label>
+          <input type="radio" name="q46" value="4" id="q46-4"><label for="q46-4">4</label>
+          <input type="radio" name="q46" value="5" id="q46-5"><label for="q46-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>47. Gosto de ter controle sobre meu ambiente e situações.</p>
+        <div class="scale">
+          <input type="radio" name="q47" value="0" id="q47-0"><label for="q47-0">0</label>
+          <input type="radio" name="q47" value="1" id="q47-1"><label for="q47-1">1</label>
+          <input type="radio" name="q47" value="2" id="q47-2"><label for="q47-2">2</label>
+          <input type="radio" name="q47" value="3" id="q47-3"><label for="q47-3">3</label>
+          <input type="radio" name="q47" value="4" id="q47-4"><label for="q47-4">4</label>
+          <input type="radio" name="q47" value="5" id="q47-5"><label for="q47-5">5</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>48. Sou espontâneo(a) e gosto de surpresas.</p>
+        <div class="scale">
+          <input type="radio" name="q48" value="0" id="q48-0"><label for="q48-0">0</label>
+          <input type="radio" name="q48" value="1" id="q48-1"><label for="q48-1">1</label>
+          <input type="radio" name="q48" value="2" id="q48-2"><label for="q48-2">2</label>
+          <input type="radio" name="q48" value="3" id="q48-3"><label for="q48-3">3</label>
+          <input type="radio" name="q48" value="4" id="q48-4"><label for="q48-4">4</label>
+          <input type="radio" name="q48" value="5" id="q48-5"><label for="q48-5">5</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-resultado">Ver meu resultado MBTI</button>
+  </form>
+
+  <div id="resultado" class="resultado-container" style="display: none;">
+    <h2>Seu Tipo de Personalidade MBTI</h2>
+    <div class="resultado-card">
+      <div class="tipo-mbti" id="tipo-resultado"></div>
+      <div class="nome-tipo" id="nome-resultado"></div>
+      <div class="descricao-tipo" id="descricao-resultado"></div>
+      <div class="caracteristicas" id="caracteristicas-resultado"></div>
+    </div>
+    <button onclick="reiniciarQuiz()" class="btn-reiniciar">Fazer o teste novamente</button>
+  </div>
+</main>
+
+<!-- Adicione antes do fechamento da tag </body> -->
+<script>
+// Dados dos tipos MBTI
+const tiposMBTI = {
+  'INTJ': {
+    nome: 'O Arquiteto',
+    descricao: 'Visionários estratégicos com planos para tudo. São independentes, determinados e têm altos padrões de competência.',
+    caracteristicas: 'Forças: Estratégico, independente, determinado, criativo. Fraquezas: Arrogante, crítico, combativo, insensível.'
+  },
+  'INTP': {
+    nome: 'O Lógico',
+    descricao: 'Pensadores inovadores com sede insaciável de conhecimento. São flexíveis e tolerantes até que seus valores sejam ameaçados.',
+    caracteristicas: 'Forças: Analítico, original, objetivo, criativo. Fraquezas: Insensível, ausente, condescendente, desorganizado.'
+  },
+  'ENTJ': {
+    nome: 'O Comandante',
+    descricao: 'Líderes naturais ousados e imaginativos. Sempre encontram um caminho ou fazem um.',
+    caracteristicas: 'Forças: Eficiente, energético, autoconfiante, líder nato. Fraquezas: Teimoso, intolerante, impaciente, arrogante.'
+  },
+  'ENTP': {
+    nome: 'O Inovador',
+    descricao: 'Pensadores inteligentes e curiosos que não conseguem resistir a um desafio intelectual.',
+    caracteristicas: 'Forças: Conhecedor, rápido, original, excelente debatedor. Fraquezas: Argumentativo, insensível, intolerante, dificuldade de foco.'
+  },
+  'INFJ': {
+    nome: 'O Advogado',
+    descricao: 'Idealistas quietos e místicos, mas muito inspiradores e incansáveis.',
+    caracteristicas: 'Forças: Criativo, perspicaz, inspirador, convincente. Fraquezas: Sensível, extremamente privado, perfeccionista, sempre precisa de uma causa.'
+  },
+  'INFP': {
+    nome: 'O Mediador',
+    descricao: 'Pessoas poéticas, bondosas e altruístas, sempre ansiosas para ajudar uma boa causa.',
+    caracteristicas: 'Forças: Idealista, leal aos valores, adaptável, curioso. Fraquezas: Muito idealista, muito altruísta, impraticável, emocionalmente vulnerável.'
+  },
+  'ENFJ': {
+    nome: 'O Protagonista',
+    descricao: 'Líderes carismáticos e inspiradores, capazes de hipnotizar seus ouvintes.',
+    caracteristicas: 'Forças: Tolerante, confiável, carismático, líder natural. Fraquezas: Excessivamente idealista, muito sensível, flutuações de autoestima, luta para tomar decisões difíceis.'
+  },
+  'ENFP': {
+    nome: 'O Ativista',
+    descricao: 'Espíritos livres entusiasmados, criativos e sociáveis, que sempre conseguem encontrar um motivo para sorrir.',
+    caracteristicas: 'Forças: Curioso, observador, energético, excelente comunicador. Fraquezas: Dificuldade de foco, overthinking, estressado facilmente, altamente emocional.'
+  },
+  'ISTJ': {
+    nome: 'O Logístico',
+    descricao: 'Indivíduos práticos e orientados a fatos, cuja confiabilidade não pode ser duvidada.',
+    caracteristicas: 'Forças: Honesto, direto, leal, paciente. Fraquezas: Teimoso, insensível, sempre pelos livros, julga, culpa a si mesmo.'
+  },
+  'ISFJ': {
+    nome: 'O Defensor',
+    descricao: 'Protetores muito dedicados e calorosos, sempre prontos para defender seus entes queridos.',
+    caracteristicas: 'Forças: Apoiador, confiável, paciente, imaginativo. Fraquezas: Humilde, reprime sentimentos, sobrecarregado, relutante em mudanças.'
+  },
+  'ESTJ': {
+    nome: 'O Executivo',
+    descricao: 'Excelentes administradores, incomparáveis em gerenciar coisas ou pessoas.',
+    caracteristicas: 'Forças: Dedicado, forte vontade, direto, leal. Fraquezas: Inflexível, desconfortável com o incomum, crítico, focado no status.'
+  },
+  'ESFJ': {
+    nome: 'O Cônsul',
+    descricao: 'Pessoas extraordinariamente carinhosas, sociais e populares, sempre ansiosas para ajudar.',
+    caracteristicas: 'Forças: Prático, leal, sensível, caloroso. Fraquezas: Preocupado com status social, inflexível, relutante em inovar, vulnerável a críticas.'
+  },
+  'ISTP': {
+    nome: 'O Virtuoso',
+    descricao: 'Experimentadores ousados e práticos, mestres de todos os tipos de ferramentas.',
+    caracteristicas: 'Forças: Otimista, energético, criativo, prático. Fraquezas: Teimoso, insensível, privado, facilmente entediado.'
+  },
+  'ISFP': {
+    nome: 'O Aventureiro',
+    descricao: 'Artistas flexíveis e charmosos, sempre prontos para explorar novas possibilidades.',
+    caracteristicas: 'Forças: Charmoso, sensível, imaginativo, apaixonado. Fraquezas: Facilmente estressado, excessivamente competitivo, flutuações de humor, independente demais.'
+  },
+  'ESTP': {
+    nome: 'O Empreendedor',
+    descricao: 'Pessoas inteligentes, energéticas e muito perceptivas, que realmente gostam de viver no limite.',
+    caracteristicas: 'Forças: Ousado, racional, prático, original. Fraquezas: Insensível, impaciente, assumidor de riscos, desorganizado.'
+  },
+  'ESFP': {
+    nome: 'O Animador',
+    descricao: 'Pessoas espontâneas, energéticas e entusiasmadas - a vida nunca é chata ao redor delas.',
+    caracteristicas: 'Forças: Ousado, original, prático, excelente habilidades sociais. Fraquezas: Sensível, evita conflitos, facilmente entediado, dificuldade de planejamento.'
+  }
+};
+
+// Função para calcular progresso
+function atualizarProgresso() {
+  const totalPerguntas = 48;
+  const perguntasRespondidas = document.querySelectorAll('input[type="radio"]:checked').length;
+  const progresso = (perguntasRespondidas / totalPerguntas) * 100;
+  
+  document.getElementById('progress').style.width = progresso + '%';
+  document.getElementById('current-question').textContent = perguntasRespondidas + 1;
+}
+
+// Adicionar event listeners para atualizar progresso
+document.addEventListener('DOMContentLoaded', function() {
+  const radios = document.querySelectorAll('input[type="radio"]');
+  radios.forEach(radio => {
+    radio.addEventListener('change', atualizarProgresso);
+  });
+});
+
+// Função para calcular resultado MBTI
+function calcularMBTI(respostas) {
+  let E = 0, I = 0, S = 0, N = 0, T = 0, F = 0, J = 0, P = 0;
+  
+  // Extroversão vs Introversão (perguntas 1-12)
+  E += parseInt(respostas.q1) + parseInt(respostas.q3) + parseInt(respostas.q5) + parseInt(respostas.q7) + parseInt(respostas.q9) + parseInt(respostas.q11);
+  I += parseInt(respostas.q2) + parseInt(respostas.q4) + parseInt(respostas.q6) + parseInt(respostas.q8) + parseInt(respostas.q10) + parseInt(respostas.q12);
+  
+  // Sensorial vs Intuição (perguntas 13-24)
+  S += parseInt(respostas.q13) + parseInt(respostas.q15) + parseInt(respostas.q17) + parseInt(respostas.q19) + parseInt(respostas.q21) + parseInt(respostas.q23);
+  N += parseInt(respostas.q14) + parseInt(respostas.q16) + parseInt(respostas.q18) + parseInt(respostas.q20) + parseInt(respostas.q22) + parseInt(respostas.q24);
+  
+  // Pensamento vs Sentimento (perguntas 25-36)
+  T += parseInt(respostas.q25) + parseInt(respostas.q27) + parseInt(respostas.q29) + parseInt(respostas.q31) + parseInt(respostas.q33) + parseInt(respostas.q35);
+  F += parseInt(respostas.q26) + parseInt(respostas.q28) + parseInt(respostas.q30) + parseInt(respostas.q32) + parseInt(respostas.q34) + parseInt(respostas.q36);
+  
+  // Julgamento vs Percepção (perguntas 37-48)
+  J += parseInt(respostas.q37) + parseInt(respostas.q39) + parseInt(respostas.q41) + parseInt(respostas.q43) + parseInt(respostas.q45) + parseInt(respostas.q47);
+  P += parseInt(respostas.q38) + parseInt(respostas.q40) + parseInt(respostas.q42) + parseInt(respostas.q44) + parseInt(respostas.q46) + parseInt(respostas.q48);
+  
+  // Determinar tipo MBTI
+  let tipo = '';
+  tipo += E > I ? 'E' : 'I';
+  tipo += S > N ? 'S' : 'N';
+  tipo += T > F ? 'T' : 'F';
+  tipo += J > P ? 'J' : 'P';
+  
+  return tipo;
+}
+
+// Função para processar o formulário
+document.getElementById('mbti-quiz').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  const respostas = {};
+  
+  // Verificar se todas as perguntas foram respondidas
+  for (let i = 1; i <= 48; i++) {
+    const resposta = formData.get('q' + i);
+    if (!resposta) {
+      alert('Por favor, responda todas as perguntas antes de continuar.');
+      return;
+    }
+    respostas['q' + i] = resposta;
+  }
+  
+  // Calcular resultado
+  const tipoMBTI = calcularMBTI(respostas);
+  const dadosTipo = tiposMBTI[tipoMBTI];
+  
+  // Mostrar resultado
+  document.getElementById('tipo-resultado').textContent = tipoMBTI;
+  document.getElementById('nome-resultado').textContent = dadosTipo.nome;
+  document.getElementById('descricao-resultado').textContent = dadosTipo.descricao;
+  document.getElementById('caracteristicas-resultado').textContent = dadosTipo.caracteristicas;
+  
+  // Esconder formulário e mostrar resultado
+  document.getElementById('mbti-quiz').style.display = 'none';
+  document.getElementById('resultado').style.display = 'block';
+  
+  // Scroll para o resultado
+  document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Função para reiniciar o quiz
+function reiniciarQuiz() {
+  document.getElementById('mbti-quiz').reset();
+  document.getElementById('mbti-quiz').style.display = 'block';
+  document.getElementById('resultado').style.display = 'none';
+  document.getElementById('progress').style.width = '0%';
+  document.getElementById('current-question').textContent = '1';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+  <footer>
+    <p>&copy; 2024 PsiQuiz. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
+
+<style>
+/* Estilos específicos para o quiz */
+.escala-info {
+  display: flex;
+  justify-content: space-between;
+  background: #f0f0f0;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin: 2rem 0 1rem 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.question-group {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.question-group h3 {
+  color: #667eea;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
+}
+
+.question {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.question p {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #333;
+}
+
+.scale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.scale input[type="radio"] {
+  display: none;
+}
+
+.scale label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  color: #666;
+}
+
+.scale input[type="radio"]:checked + label {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+  transform: scale(1.1);
+}
+
+.scale label:hover {
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
+.btn-resultado {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-resultado:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.resultado-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.resultado-card {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tipo-mbti {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.nome-tipo {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.descricao-tipo {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.caracteristicas {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: left;
+  color: #666;
+  line-height: 1.6;
+}
+
+.btn-reiniciar {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+}
+
+.btn-reiniciar:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* Responsive para o quiz */
+@media (max-width: 768px) {
+  .scale {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .scale label {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  .question {
+    padding: 1rem;
+  }
+  
+  .question-group {
+    padding: 1rem;
+  }
+  
+  .tipo-mbti {
+    font-size: 3rem;
+  }
+  
+  .nome-tipo {
+    font-size: 1.5rem;
+  }
+}
+</style>
