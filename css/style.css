@@ -1,0 +1,412 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* HEADER - CORRIGIDO PARA NÃO CORTAR A LOGO */
+header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0; /* Remove padding do header */
+  min-height: 70px; /* Altura mínima aumentada */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 1rem 1rem; /* Menos padding à esquerda */
+  width: 100%;
+  min-height: 70px; /* Mesma altura mínima */
+}
+
+/* LOGO - COMPLETAMENTE CORRIGIDA */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto; /* Altura automática */
+  min-height: 50px; /* Altura mínima */
+  padding: 0.25rem 0; /* Padding vertical para dar espaço */
+  margin-left: -1rem; /* Move a logo para a esquerda */
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: auto;
+}
+
+.logo img {
+  height: 50px !important; /* Altura ligeiramente maior */
+  width: auto !important;
+  max-width: none !important;
+  border-radius: 50%;
+  object-fit: contain;
+  display: block;
+  vertical-align: middle;
+  /* Remove qualquer limitação que possa cortar a imagem */
+  clip: none !important;
+  overflow: visible !important;
+}
+
+/* NAVEGAÇÃO */
+nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+nav li {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+nav a.active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* MAIN CONTENT */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  min-height: calc(100vh - 110px); /* Ajustado para nova altura do header */
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* BUTTON STYLES - CORRIGIDO PARA CENTRALIZAR */
+.btn-iniciar {
+  display: block; /* Mudado para block */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 2rem auto; /* Auto nas laterais para centralizar */
+  width: fit-content; /* Largura do conteúdo */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  border: none;
+  cursor: pointer;
+  text-align: center; /* Centraliza o texto */
+}
+
+.btn-iniciar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* Garantir que todos os botões sejam centralizados */
+button,
+.btn,
+.button,
+input[type="submit"],
+input[type="button"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* SECTION STYLES */
+.metodo {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
+}
+
+.metodo h3 {
+  color: #667eea;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.metodo p {
+  text-align: left;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* GRUPOS MBTI */
+.grupo-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.grupo {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.grupo:hover {
+  transform: translateY(-5px);
+}
+
+.grupo h3 {
+  color: #667eea;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.grupo p {
+  text-align: left;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.grupo ul {
+  list-style: none;
+}
+
+.grupo li {
+  padding: 0.5rem 0;
+  color: #555;
+  border-bottom: 1px solid #eee;
+}
+
+.grupo li:last-child {
+  border-bottom: none;
+}
+
+.grupo strong {
+  color: #667eea;
+  font-weight: bold;
+}
+
+/* FOOTER - CORRIGIDO COM MESMO GRADIENTE DO HEADER */
+footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Mesmo gradiente do header */
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Sombra invertida para dar profundidade */
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  header {
+    min-height: 65px;
+  }
+  
+  .header-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem 0.75rem 0.5rem; /* Menos padding à esquerda no mobile */
+    min-height: 65px;
+  }
+  
+  .logo {
+    min-height: 45px;
+    padding: 0.125rem 0;
+    margin-left: -0.5rem; /* Menos margem no mobile */
+  }
+  
+  .logo img {
+    height: 42px !important;
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  nav a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  main {
+    padding: 2rem 1rem;
+    min-height: calc(100vh - 105px);
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .grupo-boxes {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Botões centralizados no mobile também */
+  .btn-iniciar {
+    margin: 1.5rem auto;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* ESTILOS PARA INTEGRAÇÃO COM TAILWIND */
+@layer base {
+  html {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+@layer components {
+  .card-gradient {
+    @apply bg-gradient-to-br from-purple-50 to-blue-50;
+  }
+  
+  .btn-gradient {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700;
+  }
+}
+
+/* FORÇA A LOGO A NÃO SER CORTADA - REGRAS IMPORTANTES */
+.logo img,
+.logo a img,
+header .logo img {
+  max-height: none !important;
+  clip-path: none !important;
+  mask: none !important;
+  overflow: visible !important;
+}
+
+/* GARANTE QUE NENHUM CONTAINER CORTE A LOGO */
+header,
+.header-container,
+.logo,
+.logo a {
+  overflow: visible !important;
+}
+
+/* CENTRALIZAÇÃO FORÇADA PARA BOTÕES */
+.text-center,
+.center,
+.mx-auto {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/* LOGIN FORM */
+#loginForm {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+#loginForm h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+#loginForm input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+#loginForm input:focus {
+  border-color: #667eea;
+  outline: none;
+}
+
+#loginForm button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+#loginForm button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+#loginMessage {
+  font-size: 0.95rem;
+  color: red;
+  text-align: center;
+  margin-top: -0.5rem;
+}

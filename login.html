@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - PsiQuiz</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="imagens/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="imagens/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="imagens/favicon-16x16.png">
+  <link rel="manifest" href="imagens/site.webmanifest">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagens/borboleta.png" alt="Logo Borboleta" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="mbti.html">MBTIs</a></li>
+          <li><a href="tipos.html">Tipos de MBTI</a></li>
+          <li><a href="quiz.html">Quiz MBTI</a></li>
+          <li><a href="profissoes.html">Teste Vocacional</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="login.html" class="active">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Bem-vindo de volta 👋</h2>
+    <p>Faça login para acessar seu perfil personalizado e salvar seus resultados.</p>
+
+    <form id="loginForm" class="metodo">
+      <h3>Login</h3>
+      <input type="email" id="email" placeholder="Seu email" required />
+      <input type="password" id="password" placeholder="Sua senha" required />
+      <button type="submit" class="btn-iniciar">Entrar</button>
+      <p id="loginMessage" style="color: red; text-align: center; margin-top: 1rem;"></p>
+    </form>
+
+    <section class="metodo">
+      <h3>Recursos do perfil personalizado:</h3>
+      <p>
+        Ao fazer login, você poderá salvar seus resultados do teste MBTI, acompanhar seu desenvolvimento pessoal ao longo do tempo e receber recomendações personalizadas de carreira com base no seu tipo de personalidade.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PsiQuiz. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const message = document.getElementById('loginMessage');
+      message.textContent = '';
+
+      if (!email || !password) {
+        message.textContent = 'Por favor, preencha todos os campos.';
+        return;
+      }
+
+      try {
+        const res = await fetch('http://localhost:3000/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.token) {
+          localStorage.setItem('token', data.token);
+          window.location.href = 'perfil.html';
+        } else {
+          message.textContent = data.message || 'Email ou senha incorretos.';
+        }
+      } catch (error) {
+        message.textContent = 'Erro ao conectar com o servidor. Verifique se o backend está rodando.';
+        console.error('Erro de conexão:', error);
+      }
+    });
+  </script>
+</body>
+</html>

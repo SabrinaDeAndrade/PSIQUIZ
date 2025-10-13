@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste Vocacional - PsiQuiz</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="imagens/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="imagens/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="imagens/favicon-16x16.png">
+  <link rel="manifest" href="imagens/site.webmanifest">
+  <style>
+/* Estilos específicos para o teste vocacional */
+.teste-vocacional {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mbti-selector {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.mbti-selector h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+#mbti-select {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+#mbti-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#mbti-select option {
+  padding: 0.5rem;
+}
+
+.question-vocacional {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.question-vocacional h4 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.opcoes-vocacional {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.opcao-vocacional {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.opcao-vocacional:hover {
+  border-color: #667eea;
+  background: #f0f8ff;
+}
+
+.opcao-vocacional input[type="radio"] {
+  margin-right: 0.8rem;
+  transform: scale(1.2);
+}
+
+.opcao-vocacional input[type="radio"]:checked {
+  accent-color: #667eea;
+}
+
+.opcao-vocacional label {
+  cursor: pointer;
+  flex: 1;
+}
+
+.btn-teste-vocacional {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-teste-vocacional:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.resultado-vocacional {
+  display: none;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resultado-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.resultado-header h2 {
+  color: #667eea;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.resultado-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.profissoes-recomendadas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.profissao-card {
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  transition: transform 0.3s ease;
+}
+
+.profissao-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profissao-card h3 {
+  color: #667eea;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.profissao-card p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.compatibilidade {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.compatibilidade-bar {
+  flex: 1;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.compatibilidade-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  transition: width 0.3s ease;
+}
+
+.btn-refazer {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 1.5rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-refazer:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+.link-quiz {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.8rem 1.5rem;
+  background: #17a2b8;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.link-quiz:hover {
+  background: #138496;
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .teste-vocacional {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .mbti-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.3rem;
+  }
+  
+  .mbti-label {
+    padding: 0.6rem 0.3rem;
+    font-size: 0.9rem;
+  }
+  
+  .profissoes-recomendadas {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .opcoes-vocacional {
+    gap: 0.5rem;
+  }
+  
+  .opcao-vocacional {
+    padding: 0.6rem;
+  }
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagens/borboleta.png" alt="Logo Borboleta">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="mbti.html">MBTIs</a></li>
+          <li><a href="tipos.html">Tipos de MBTI</a></li>
+       <li><a href="quiz.html">Quiz MBTI</a></li>
+          <li><a href="profissoes.html" class="active">Teste Vocacional</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Teste Vocacional Personalizado</h2>
+    <p>Descubra as profissões ideais para você baseadas no seu tipo MBTI e interesses pessoais.</p>
+
+    <section class="metodo">
+      <h3>Como funciona?</h3>
+      <p>
+        Este teste combina seu tipo de personalidade MBTI com suas preferências profissionais para sugerir carreiras que se alinham com seu perfil. Se você ainda não conhece seu tipo MBTI, faça primeiro nosso teste de personalidade.
+      </p>
+      <a href="quiz.html" class="btn-iniciar">Fazer Teste MBTI primeiro</a>
+    </section>
+
+    <div class="teste-vocacional">
+      <form id="teste-vocacional-form">
+        <!-- Seleção do MBTI -->
+        <div class="mbti-selector">
+          <h3>1. Qual é o seu tipo MBTI?</h3>
+          <p>Se você já fez nosso teste de personalidade, selecione seu resultado:</p>
+          
+          <select name="mbti" id="mbti-select" required>
+            <option value="">Selecione seu tipo MBTI</option>
+            <option value="INTJ">INTJ - O Arquiteto</option>
+            <option value="INTP">INTP - O Lógico</option>
+            <option value="ENTJ">ENTJ - O Comandante</option>
+            <option value="ENTP">ENTP - O Inovador</option>
+            <option value="INFJ">INFJ - O Advogado</option>
+            <option value="INFP">INFP - O Mediador</option>
+            <option value="ENFJ">ENFJ - O Protagonista</option>
+            <option value="ENFP">ENFP - O Ativista</option>
+            <option value="ISTJ">ISTJ - O Logístico</option>
+            <option value="ISFJ">ISFJ - O Defensor</option>
+            <option value="ESTJ">ESTJ - O Executivo</option>
+            <option value="ESFJ">ESFJ - O Cônsul</option>
+            <option value="ISTP">ISTP - O Virtuoso</option>
+            <option value="ISFP">ISFP - O Aventureiro</option>
+            <option value="ESTP">ESTP - O Empreendedor</option>
+            <option value="ESFP">ESFP - O Animador</option>
+          </select>
+        </div>
+
+        <!-- Perguntas Vocacionais -->
+        <div class="question-vocacional">
+          <h4>2. Que tipo de ambiente de trabalho você prefere?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="ambiente" value="escritorio" id="amb-escritorio">
+              <label for="amb-escritorio">Escritório corporativo estruturado</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="ambiente" value="criativo" id="amb-criativo">
+              <label for="amb-criativo">Ambiente criativo e flexível</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="ambiente" value="campo" id="amb-campo">
+              <label for="amb-campo">Trabalho de campo ou ao ar livre</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="ambiente" value="laboratorio" id="amb-laboratorio">
+              <label for="amb-laboratorio">Laboratório ou ambiente técnico</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="ambiente" value="social" id="amb-social">
+              <label for="amb-social">Ambiente com muito contato humano</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-vocacional">
+          <h4>3. O que mais te motiva no trabalho?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="motivacao" value="dinheiro" id="mot-dinheiro">
+              <label for="mot-dinheiro">Estabilidade financeira e crescimento</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="motivacao" value="impacto" id="mot-impacto">
+              <label for="mot-impacto">Causar impacto positivo na sociedade</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="motivacao" value="criatividade" id="mot-criatividade">
+              <label for="mot-criatividade">Expressar criatividade e inovação</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="motivacao" value="conhecimento" id="mot-conhecimento">
+              <label for="mot-conhecimento">Aprender e descobrir coisas novas</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="motivacao" value="lideranca" id="mot-lideranca">
+              <label for="mot-lideranca">Liderar equipes e projetos</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-vocacional">
+          <h4>4. Como você prefere trabalhar?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="estilo" value="sozinho" id="est-sozinho">
+              <label for="est-sozinho">Sozinho(a), com foco e concentração</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="estilo" value="equipe-pequena" id="est-equipe-pequena">
+              <label for="est-equipe-pequena">Em equipe pequena e colaborativa</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="estilo" value="equipe-grande" id="est-equipe-grande">
+              <label for="est-equipe-grande">Em grandes equipes e projetos</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="estilo" value="liderando" id="est-liderando">
+              <label for="est-liderando">Liderando e coordenando outros</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="estilo" value="atendimento" id="est-atendimento">
+              <label for="est-atendimento">Atendendo e ajudando pessoas</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-vocacional">
+          <h4>5. Qual área mais desperta seu interesse?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="area" value="tecnologia" id="area-tecnologia">
+              <label for="area-tecnologia">Tecnologia e inovação</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="area" value="saude" id="area-saude">
+              <label for="area-saude">Saúde e bem-estar</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="area" value="educacao" id="area-educacao">
+              <label for="area-educacao">Educação e desenvolvimento</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="area" value="negocios" id="area-negocios">
+              <label for="area-negocios">Negócios e empreendedorismo</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="area" value="arte" id="area-arte">
+              <label for="area-arte">Arte e comunicação</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="area" value="ciencias" id="area-ciencias">
+              <label for="area-ciencias">Ciências e pesquisa</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-vocacional">
+          <h4>6. Que tipo de desafio você prefere?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="desafio" value="analitico" id="des-analitico">
+              <label for="des-analitico">Resolver problemas complexos e analíticos</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="desafio" value="criativo" id="des-criativo">
+              <label for="des-criativo">Criar soluções inovadoras e originais</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="desafio" value="pratico" id="des-pratico">
+              <label for="des-pratico">Implementar soluções práticas e eficientes</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="desafio" value="social" id="des-social">
+              <label for="des-social">Resolver problemas humanos e sociais</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="desafio" value="estrategico" id="des-estrategico">
+              <label for="des-estrategico">Planejar estratégias de longo prazo</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-vocacional">
+          <h4>7. Qual é o seu ritmo de trabalho preferido?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="ritmo" value="rapido" id="ritmo-rapido">
+              <label for="ritmo-rapido">Ritmo acelerado com múltiplas tarefas</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="ritmo" value="moderado" id="ritmo-moderado">
+              <label for="ritmo-moderado">Ritmo moderado e equilibrado</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="ritmo" value="calmo" id="ritmo-calmo">
+              <label for="ritmo-calmo">Ritmo calmo com foco em qualidade</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="ritmo" value="variavel" id="ritmo-variavel">
+              <label for="ritmo-variavel">Ritmo variável conforme o projeto</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-vocacional">
+          <h4>8. Como você lida com mudanças no trabalho?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="mudanca" value="adora" id="mudanca-adora">
+              <label for="mudanca-adora">Adoro mudanças e novos desafios</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="mudanca" value="adapta" id="mudanca-adapta">
+              <label for="mudanca-adapta">Me adapto bem quando necessário</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="mudanca" value="prefere-estabilidade" id="mudanca-estabilidade">
+              <label for="mudanca-estabilidade">Prefiro estabilidade e rotina</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="mudanca" value="planejada" id="mudanca-planejada">
+              <label for="mudanca-planejada">Aceito mudanças se forem bem planejadas</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-vocacional">
+          <h4>9. Qual tipo de reconhecimento mais te motiva?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="reconhecimento" value="publico" id="rec-publico">
+              <label for="rec-publico">Reconhecimento público e visibilidade</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="reconhecimento" value="financeiro" id="rec-financeiro">
+              <label for="rec-financeiro">Recompensas financeiras e benefícios</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="reconhecimento" value="pessoal" id="rec-pessoal">
+              <label for="rec-pessoal">Satisfação pessoal e realização</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="reconhecimento" value="profissional" id="rec-profissional">
+              <label for="rec-profissional">Crescimento e desenvolvimento profissional</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-vocacional">
+          <h4>10. Que tipo de responsabilidade você prefere?</h4>
+          <div class="opcoes-vocacional">
+            <div class="opcao-vocacional">
+              <input type="radio" name="responsabilidade" value="individual" id="resp-individual">
+              <label for="resp-individual">Responsabilidade individual pelos meus resultados</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="responsabilidade" value="equipe" id="resp-equipe">
+              <label for="resp-equipe">Responsabilidade compartilhada com a equipe</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="responsabilidade" value="lideranca" id="resp-lideranca">
+              <label for="resp-lideranca">Responsabilidade por liderar e orientar outros</label>
+            </div>
+            <div class="opcao-vocacional">
+              <input type="radio" name="responsabilidade" value="especialista" id="resp-especialista">
+              <label for="resp-especialista">Responsabilidade técnica como especialista</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-teste-vocacional" onclick="calcularVocacional()">
+          Ver Minhas Profissões Ideais
+        </button>
+      </form>
+    </div>
+
+    <div id="resultado-vocacional" class="resultado-vocacional">
+      <div class="resultado-header">
+        <h2>Suas Profissões Ideais</h2>
+        <p>Baseado no seu perfil <strong id="mbti-resultado"></strong> e suas preferências</p>
+      </div>
+      
+      <div id="profissoes-lista" class="profissoes-recomendadas">
+        <!-- Profissões serão inseridas aqui via JavaScript -->
+      </div>
+      
+      <button class="btn-refazer" onclick="refazerTeste()">🔄 Refazer Teste</button>
+    </div>
+  </main>
+
+  <script>
+// Base de dados de profissões por MBTI
+const profissoesPorMBTI = {
+  'INTJ': {
+    'tecnologia': ['Arquiteto de Software', 'Cientista de Dados', 'Engenheiro de Sistemas'],
+    'ciencias': ['Pesquisador', 'Analista de Sistemas', 'Consultor Estratégico'],
+    'negocios': ['Consultor de Gestão', 'Analista Financeiro', 'Estrategista de Negócios'],
+    'saude': ['Médico Especialista', 'Pesquisador Médico', 'Bioinformático'],
+    'educacao': ['Professor Universitário', 'Pesquisador Acadêmico', 'Designer Instrucional'],
+    'arte': ['Diretor Criativo', 'Arquiteto', 'Designer de UX/UI']
+  },
+  'INTP': {
+    'tecnologia': ['Desenvolvedor de Software', 'Engenheiro de Software', 'Pesquisador em IA'],
+    'ciencias': ['Cientista', 'Matemático', 'Físico Teórico'],
+    'negocios': ['Analista de Dados', 'Consultor Técnico', 'Pesquisador de Mercado'],
+    'saude': ['Farmacêutico', 'Bioquímico', 'Geneticista'],
+    'educacao': ['Professor de Ciências', 'Pesquisador', 'Escritor Técnico'],
+    'arte': ['Game Designer', 'Compositor', 'Escritor de Ficção Científica']
+  },
+  'ENTJ': {
+    'negocios': ['CEO', 'Diretor Executivo', 'Empreendedor'],
+    'tecnologia': ['CTO', 'Gerente de Projetos de TI', 'Consultor em Tecnologia'],
+    'saude': ['Administrador Hospitalar', 'Diretor Médico', 'Consultor em Saúde'],
+    'educacao': ['Reitor', 'Diretor Educacional', 'Consultor Educacional'],
+    'ciencias': ['Diretor de Pesquisa', 'Gerente de Laboratório', 'Consultor Científico'],
+    'arte': ['Produtor Executivo', 'Diretor de Arte', 'Empresário Cultural']
+  },
+  'ENTP': {
+    'tecnologia': ['Product Manager', 'Inovador Tecnológico', 'Consultor em Inovação'],
+    'negocios': ['Empreendedor', 'Consultor de Negócios', 'Desenvolvedor de Negócios'],
+    'arte': ['Publicitário', 'Roteirista', 'Diretor Criativo'],
+    'educacao': ['Professor Inovador', 'Palestrante', 'Consultor Educacional'],
+    'saude': ['Terapeuta Inovador', 'Consultor em Saúde Mental', 'Pesquisador Clínico'],
+    'ciencias': ['Inventor', 'Pesquisador Interdisciplinar', 'Consultor Científico']
+  },
+  'INFJ': {
+    'saude': ['Psicólogo', 'Terapeuta', 'Conselheiro'],
+    'educacao': ['Professor', 'Orientador Educacional', 'Pedagogo'],
+    'arte': ['Escritor', 'Artista', 'Terapeuta de Arte'],
+    'negocios': ['Coach', 'Consultor Organizacional', 'Especialista em RH'],
+    'tecnologia': ['UX Designer', 'Analista de Sistemas', 'Consultor em Tecnologia Social'],
+    'ciencias': ['Pesquisador Social', 'Antropólogo', 'Psicólogo Pesquisador']
+  },
+  'INFP': {
+    'arte': ['Escritor', 'Artista Visual', 'Músico'],
+    'saude': ['Terapeuta', 'Psicólogo', 'Assistente Social'],
+    'educacao': ['Professor de Artes', 'Bibliotecário', 'Educador Social'],
+    'negocios': ['Coach de Vida', 'Consultor em Diversidade', 'Especialista em RSE'],
+    'tecnologia': ['Designer Gráfico', 'Desenvolvedor de Jogos', 'Content Creator'],
+    'ciencias': ['Pesquisador Qualitativo', 'Antropólogo', 'Historiador']
+  },
+  'ENFJ': {
+    'educacao': ['Professor', 'Diretor de Escola', 'Treinador Corporativo'],
+    'saude': ['Psicólogo', 'Terapeuta Familiar', 'Médico de Família'],
+    'negocios': ['Gerente de RH', 'Coach Executivo', 'Consultor Organizacional'],
+    'arte': ['Diretor de Teatro', 'Produtor Cultural', 'Comunicador'],
+    'tecnologia': ['Gerente de Produto', 'Especialista em UX', 'Community Manager'],
+    'ciencias': ['Pesquisador Social', 'Sociólogo', 'Cientista Político']
+  },
+  'ENFP': {
+    'arte': ['Ator', 'Jornalista', 'Publicitário'],
+    'negocios': ['Empreendedor Social', 'Consultor de Inovação', 'Especialista em Marketing'],
+    'educacao': ['Professor Criativo', 'Facilitador', 'Educador Popular'],
+    'saude': ['Terapeuta Ocupacional', 'Psicólogo', 'Recreacionista Terapêutico'],
+    'tecnologia': ['Product Manager', 'Designer de Experiência', 'Desenvolvedor Criativo'],
+    'ciencias': ['Pesquisador Interdisciplinar', 'Comunicador Científico', 'Inovador Social']
+  },
+  'ISTJ': {
+    'negocios': ['Contador', 'Auditor', 'Gerente Financeiro'],
+    'saude': ['Farmacêutico', 'Técnico em Saúde', 'Administrador Hospitalar'],
+    'educacao': ['Professor Tradicional', 'Bibliotecário', 'Administrador Escolar'],
+    'tecnologia': ['Analista de Sistemas', 'Administrador de Banco de Dados', 'Especialista em Segurança'],
+    'ciencias': ['Técnico de Laboratório', 'Estatístico', 'Pesquisador Quantitativo'],
+    'arte': ['Arquivista', 'Curador de Museu', 'Editor']
+  },
+  'ISFJ': {
+    'saude': ['Enfermeiro', 'Médico de Família', 'Fisioterapeuta'],
+    'educacao': ['Professor Primário', 'Orientador Escolar', 'Educador Especial'],
+    'negocios': ['Assistente Administrativo', 'Especialista em RH', 'Atendimento ao Cliente'],
+    'arte': ['Bibliotecário', 'Arquivista', 'Restaurador'],
+    'tecnologia': ['Analista de Suporte', 'Documentalista Técnico', 'Especialista em Treinamento'],
+    'ciencias': ['Técnico de Pesquisa', 'Assistente de Laboratório', 'Estatístico']
+  },
+  'ESTJ': {
+    'negocios': ['Gerente', 'Diretor Financeiro', 'Administrador'],
+    'saude': ['Administrador Hospitalar', 'Gerente de Clínica', 'Diretor de Saúde'],
+    'educacao': ['Diretor de Escola', 'Administrador Educacional', 'Coordenador Pedagógico'],
+    'tecnologia': ['Gerente de TI', 'Diretor de Tecnologia', 'Consultor em Sistemas'],
+    'ciencias': ['Gerente de Laboratório', 'Diretor de Pesquisa', 'Administrador Científico'],
+    'arte': ['Produtor', 'Gerente Cultural', 'Administrador de Museu']
+  },
+  'ESFJ': {
+    'saude': ['Enfermeiro', 'Médico de Família', 'Nutricionista'],
+    'educacao': ['Professor', 'Coordenador Pedagógico', 'Psicopedagogo'],
+    'negocios': ['Gerente de RH', 'Atendimento ao Cliente', 'Especialista em Relações Públicas'],
+    'arte': ['Organizador de Eventos', 'Relações Públicas', 'Comunicador Social'],
+    'tecnologia': ['Gerente de Produto', 'Especialista em Treinamento', 'Community Manager'],
+    'ciencias': ['Pesquisador Social', 'Estatístico', 'Coordenador de Pesquisa']
+  },
+  'ISTP': {
+    'tecnologia': ['Engenheiro', 'Técnico em Informática', 'Desenvolvedor de Sistemas'],
+    'ciencias': ['Técnico de Laboratório', 'Engenheiro Mecânico', 'Especialista em Instrumentação'],
+    'saude': ['Cirurgião', 'Técnico em Radiologia', 'Fisioterapeuta'],
+    'negocios': ['Analista Técnico', 'Consultor em Eficiência', 'Especialista em Logística'],
+    'arte': ['Designer Industrial', 'Fotógrafo Técnico', 'Editor de Vídeo'],
+    'educacao': ['Professor Técnico', 'Instrutor Prático', 'Treinador Especializado']
+  },
+  'ISFP': {
+    'arte': ['Artista', 'Designer', 'Fotógrafo'],
+    'saude': ['Terapeuta', 'Veterinário', 'Massagista'],
+    'educacao': ['Professor de Artes', 'Educador Infantil', 'Instrutor de Música'],
+    'negocios': ['Designer de Produto', 'Especialista em Experiência do Cliente', 'Consultor de Bem-estar'],
+    'tecnologia': ['Designer Gráfico', 'Desenvolvedor Front-end', 'Especialista em UX'],
+    'ciencias': ['Biólogo', 'Técnico Ambiental', 'Pesquisador de Campo']
+  },
+  'ESTP': {
+    'negocios': ['Vendedor', 'Empreendedor', 'Gerente de Vendas'],
+    'saude': ['Paramédico', 'Fisioterapeuta Esportivo', 'Técnico de Emergência'],
+    'educacao': ['Professor de Educação Física', 'Instrutor', 'Treinador'],
+    'arte': ['Ator', 'Apresentador', 'Produtor de Eventos'],
+    'tecnologia': ['Consultor Técnico', 'Especialista em Implementação', 'Gerente de Projetos'],
+    'ciencias': ['Técnico de Campo', 'Especialista em Testes', 'Pesquisador Aplicado']
+  },
+  'ESFP': {
+    'arte': ['Ator', 'Músico', 'Animador'],
+    'saude': ['Recreacionista Terapêutico', 'Assistente de Saúde', 'Técnico em Reabilitação'],
+    'educacao': ['Professor Primário', 'Educador Infantil', 'Animador Cultural'],
+    'negocios': ['Especialista em Eventos', 'Relações Públicas', 'Vendedor'],
+    'tecnologia': ['Designer de Experiência', 'Community Manager', 'Especialista em Mídias Sociais'],
+    'ciencias': ['Comunicador Científico', 'Técnico de Pesquisa Social', 'Especialista em Divulgação']
+  }
+};
+
+// Descrições das profissões
+const descricoesProfissoes = {
+  'Arquiteto de Software': 'Projeta e planeja sistemas de software complexos, definindo arquiteturas escaláveis e eficientes.',
+  'Cientista de Dados': 'Analisa grandes volumes de dados para extrair insights e padrões que orientem decisões estratégicas.',
+  'Desenvolvedor de Software': 'Cria aplicações e sistemas utilizando linguagens de programação e tecnologias modernas.',
+  'CEO': 'Lidera organizações, define estratégias corporativas e toma decisões executivas de alto nível.',
+  'Psicólogo': 'Estuda comportamento humano e oferece terapia e aconselhamento para promover bem-estar mental.',
+  'Professor': 'Educa e inspira estudantes, transmitindo conhecimento e desenvolvendo habilidades.',
+  'Escritor': 'Cria conteúdo literário, jornalístico ou técnico, expressando ideias através da palavra escrita.',
+  'Contador': 'Gerencia finanças, prepara relatórios contábeis e garante conformidade fiscal.',
+  'Enfermeiro': 'Cuida de pacientes, administra medicamentos e oferece suporte médico e emocional.',
+  'Engenheiro': 'Projeta e desenvolve soluções técnicas para problemas complexos em diversas áreas.',
+  'Vendedor': 'Promove produtos e serviços, construindo relacionamentos com clientes e fechando negócios.',
+  'Ator': 'Interpreta personagens em produções teatrais, cinematográficas ou televisivas.',
+  // Adicione mais descrições conforme necessário
+};
+
+function calcularVocacional() {
+  const form = document.getElementById('teste-vocacional-form');
+  const formData = new FormData(form);
+  
+  // Verificar se todos os campos foram preenchidos
+  const mbti = formData.get('mbti');
+  const ambiente = formData.get('ambiente');
+  const motivacao = formData.get('motivacao');
+  const estilo = formData.get('estilo');
+  const area = formData.get('area');
+  const desafio = formData.get('desafio');
+  const ritmo = formData.get('ritmo');
+  const mudanca = formData.get('mudanca');
+  const reconhecimento = formData.get('reconhecimento');
+  const responsabilidade = formData.get('responsabilidade');
+  
+  if (!mbti || !ambiente || !motivacao || !estilo || !area || !desafio || !ritmo || !mudanca || !reconhecimento || !responsabilidade) {
+    alert('Por favor, responda todas as perguntas antes de continuar.');
+    return;
+  }
+  
+  // Calcular profissões recomendadas
+  const profissoesRecomendadas = calcularProfissoes(mbti, {
+    ambiente, motivacao, estilo, area, desafio, ritmo, mudanca, reconhecimento, responsabilidade
+  });
+  
+  // Mostrar resultado
+  mostrarResultado(mbti, profissoesRecomendadas);
+}
+
+function calcularProfissoes(mbti, preferencias) {
+  const profissoesMBTI = profissoesPorMBTI[mbti] || {};
+  const areaEscolhida = preferencias.area;
+  
+  let profissoesRecomendadas = [];
+  
+  // Pegar profissões da área escolhida
+  if (profissoesMBTI[areaEscolhida]) {
+    profissoesRecomendadas = [...profissoesMBTI[areaEscolhida]];
+  }
+  
+  // Adicionar profissões de outras áreas baseadas nas preferências
+  Object.keys(profissoesMBTI).forEach(area => {
+    if (area !== areaEscolhida) {
+      // Adicionar algumas profissões de outras áreas com menor prioridade
+      profissoesRecomendadas.push(...profissoesMBTI[area].slice(0, 1));
+    }
+  });
+  
+  // Calcular compatibilidade baseada nas preferências
+  return profissoesRecomendadas.slice(0, 6).map(profissao => {
+    const compatibilidade = calcularCompatibilidade(profissao, mbti, preferencias);
+    return {
+      nome: profissao,
+      compatibilidade: compatibilidade,
+      descricao: descricoesProfissoes[profissao] || 'Profissão que combina com seu perfil e interesses.'
+    };
+  }).sort((a, b) => b.compatibilidade - a.compatibilidade);
+}
+
+function calcularCompatibilidade(profissao, mbti, preferencias) {
+  let score = 70; // Base score
+  
+  // Ajustar baseado no MBTI
+  const tipoMBTI = mbti;
+  if (tipoMBTI.includes('E') && preferencias.estilo === 'atendimento') score += 8;
+  if (tipoMBTI.includes('I') && preferencias.estilo === 'sozinho') score += 8;
+  if (tipoMBTI.includes('N') && preferencias.desafio === 'criativo') score += 8;
+  if (tipoMBTI.includes('S') && preferencias.desafio === 'pratico') score += 8;
+  if (tipoMBTI.includes('T') && preferencias.desafio === 'analitico') score += 8;
+  if (tipoMBTI.includes('F') && preferencias.desafio === 'social') score += 8;
+  if (tipoMBTI.includes('J') && preferencias.ambiente === 'escritorio') score += 4;
+  if (tipoMBTI.includes('P') && preferencias.ambiente === 'criativo') score += 4;
+  
+  // Ajustar baseado na motivação
+  if (preferencias.motivacao === 'impacto' && profissao.includes('Terapeuta')) score += 10;
+  if (preferencias.motivacao === 'criatividade' && profissao.includes('Designer')) score += 10;
+  if (preferencias.motivacao === 'lideranca' && profissao.includes('Gerente')) score += 10;
+  
+  // Ajustar baseado nas novas perguntas
+  if (preferencias.ritmo === 'rapido' && tipoMBTI.includes('E')) score += 3;
+  if (preferencias.ritmo === 'calmo' && tipoMBTI.includes('I')) score += 3;
+  if (preferencias.mudanca === 'adora' && tipoMBTI.includes('P')) score += 3;
+  if (preferencias.mudanca === 'prefere-estabilidade' && tipoMBTI.includes('J')) score += 3;
+  if (preferencias.reconhecimento === 'publico' && tipoMBTI.includes('E')) score += 2;
+  if (preferencias.reconhecimento === 'pessoal' && tipoMBTI.includes('I')) score += 2;
+  if (preferencias.responsabilidade === 'lideranca' && tipoMBTI.includes('E')) score += 3;
+  if (preferencias.responsabilidade === 'individual' && tipoMBTI.includes('I')) score += 3;
+  
+  return Math.min(score, 95); // Máximo 95%
+}
+
+function mostrarResultado(mbti, profissoes) {
+  document.getElementById('mbti-resultado').textContent = mbti;
+  
+  const listaProfissoes = document.getElementById('profissoes-lista');
+  listaProfissoes.innerHTML = '';
+  
+  profissoes.forEach(profissao => {
+    const card = document.createElement('div');
+    card.className = 'profissao-card';
+    card.innerHTML = `
+      <h3>${profissao.nome}</h3>
+      <p>${profissao.descricao}</p>
+      <div class="compatibilidade">
+        <span>${profissao.compatibilidade}% compatível</span>
+        <div class="compatibilidade-bar">
+          <div class="compatibilidade-fill" style="width: ${profissao.compatibilidade}%"></div>
+        </div>
+      </div>
+    `;
+    listaProfissoes.appendChild(card);
+  });
+  
+  // Esconder formulário e mostrar resultado
+  document.querySelector('.teste-vocacional').style.display = 'none';
+  document.getElementById('resultado-vocacional').style.display = 'block';
+  
+  // Scroll para o resultado
+  document.getElementById('resultado-vocacional').scrollIntoView({ behavior: 'smooth' });
+}
+
+function refazerTeste() {
+  document.getElementById('teste-vocacional-form').reset();
+  document.querySelector('.teste-vocacional').style.display = 'block';
+  document.getElementById('resultado-vocacional').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+  <footer>
+    <p>&copy; 2025 PsiQuiz. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
